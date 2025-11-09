@@ -1,26 +1,23 @@
-#include <stdio.h>
+import java.util.*;
 
-int main() {
-    int row = 5;
-    int col = 5;
-    int k;
-    
-    for(int i=0;i <row; i++) 
-    {
-        k = (i%2 == 0) ? 1 : 0;
-        for(int j=0; j<col; j++) 
-        {
-            if(j <= i) 
-            {   
-                printf("%d" , k);
-                k = (k == 0) ? 1 : 0;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int rows = 5;
+        int cols = 5;
+        
+        for(int i=0; i<rows; i++) {
+            int k = (i % 2 == 0) ? 1 : 0;
+            for(int j=0; j<cols; j++) {
+                if(j != 0) {
+                    k = (k == 0) ? 1 : 0;
+                }
+                if(j <= i) System.out.print(k);
+                else System.out.print(" ");
             }
-            else printf(" ");
-            
+            System.out.println();
         }
-        printf("\n");
     }
-    return 0;
 }
 
 output 
