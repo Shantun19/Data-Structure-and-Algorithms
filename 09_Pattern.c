@@ -1,31 +1,34 @@
-#include <stdio.h>
+import java.util.*;
 
-int main() {
-    int col = 8;
-    int row = 4;
-
-    for(int i=0; i<row; i++) {
-        int k = 1;
-        for(int j=0; j<col; j++) {
-            if(j < (col/2)) {
-                if(j <= i) {
-                    printf("%d" , k);
-                    k++;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int rows = 4;
+        int cols = 8;
+        
+        for(int i=0; i<rows; i++) {
+            for(int j=0; j<cols; j++) {
+                if(j <= i || j >= (cols-1)-i) {
+                    int k = getTheNumber(i , j , cols);
+                    System.out.print(k);
                 }
-                else printf(" ");
+                else System.out.print(" ");
             }
-            else {
-                if(j >= (col-1)-i) {
-                    k--;
-                    printf("%d" , k);
-                }
-                else printf(" ");
-            }
+            System.out.println();
         }
-        printf("\n");
     }
-
-    return 0;
+    
+    public static int getTheNumber(int i , int j , int cols) { // 0 , 0 , 8
+        // increament from the left side 
+        if(j <= i) { // 0 <= 1
+            return j+1;
+        }
+        else {
+            // decreament from the right side 
+            return cols - j; // 8 - 1 = 7
+            
+        }
+    }
 }
 
 output:
