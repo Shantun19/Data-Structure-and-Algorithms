@@ -1,29 +1,22 @@
-#include <stdio.h>
-
-int main() {
-    int rows = 5;
-    int col = 5;
-    
-    for(int i=0; i<rows; i++) {
-        // define a character 
-        char ch = 'A';
-        
-        for(int j=0; j<col; j++) {
-            if(j <= 4 - i) {
-                printf("%c " , ch);
-                ch++;
-            }
-            else {
-                printf(" ");
-            }
-        }
-        printf("\n");
-    }
+public class Intro {
+	public static void main(String[] args) {
+		int rows = 5;
+		int cols = 5;
+		
+		for(int i=0; i<rows; i++) {
+			char ch = 'A';
+			for(int j=0; j<cols; j++) {
+				if(j <= 4-i) System.out.print(ch++);
+				else System.out.print(" ");
+			}
+			System.out.println();
+		}
+	}	
 }
-
-// output 
-A B C D E 
-A B C D  
-A B C   
-A B    
-A
+/*
+0 - 0 1 2 3 4
+1 - 0 1 2 3
+2 - 0 1 2
+3 - 0 1
+4 - 0
+*/
