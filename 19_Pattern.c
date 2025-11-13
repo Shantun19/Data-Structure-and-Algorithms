@@ -1,30 +1,30 @@
-#include <stdio.h>
-#include <math.h>
+import java.util.*;
 
-int main() {
-    int rows = 7;
-    int cols = 7;
-    int element = 4;
-    
-    int findMin(int a , int b) {
-        if(a < b) return a;
-        return b;
-    }
-    
-    for(int i = 0; i < rows; i++) {
-        for(int j = 0; j < cols; j++) {
-            // get the closest distance from the left and top edge
-            int closestFromLeftAndTop = findMin(i , j);
-            int closestFromRightAndBottom = findMin((rows-1-i) , (cols-1-j));
-            int resultantDistance = findMin(closestFromLeftAndTop , closestFromRightAndBottom);
-            printf("%d" , element - resultantDistance);
-        }
-        printf("\n");
-    }
+public class Intro {
+	public static int findMin(int leftTop , int rightBottom) {
+		return (leftTop < rightBottom) ? leftTop : rightBottom;
+	}
+	
+	public static void main(String[] args) {
+		int rows = 7;
+		int cols = 7;
+		int element = 4;
+		
+		for(int i=0; i<rows; i++) {			
+			for(int j=0; j<cols; j++) {
+				// get the closest distance from the left and top edge
+				int closetFromLeftAndTop = Math.min(i , j);
+				int closetFromRightAndBottom = Math.min((rows-1-i) , (cols-1-j));
+				int resultantDistance = findMin(closetFromLeftAndTop , closetFromRightAndBottom);
+				System.out.print(element - resultantDistance);
+			}
+			System.out.println();
+		}
+	}	
 }
 
+/*
 
-// output 
 4444444
 4333334
 4322234
@@ -33,3 +33,4 @@ int main() {
 4333334
 4444444
 
+*/
