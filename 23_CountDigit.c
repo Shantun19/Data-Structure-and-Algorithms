@@ -1,66 +1,49 @@
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
+import java.util.*;
 
-// iterative approach
-int countDigits(int num) {
-    int count = 0;
-    while(num != 0) {
-        count++;
-        num/=10;
+class Main {
+    public static void main(String[] args) {
+        int digit_01 = 5673;
+        countDigitUsingIterativeMethod(digit_01);
+        System.out.println();
+        int digit_02 = 509235;
+        int result = countDigitUsingRecursiveMethod(digit_02);
+        System.out.print("the Number of digit using Recursive method is => " + result);
+        System.out.println();
+        int digit_03 = 50923;
+        countDigitUsingLogMethod(digit_03);
+        System.out.println();
+        int digit_04 = 503;
+        countDigitUsingStringMethod(digit_04);
     }
-    return count;
+    
+    public static void countDigitUsingIterativeMethod(int digit) {
+        /* digit counter to store the count of digits */
+        int digitCounter = 0;
+        /* reducing the number by its last digit until it become 0 */
+        while(digit != 0) {
+            /* increament the counter */
+            digitCounter++;
+            /* reducing the digits */
+            digit/=10;
+        }
+        System.out.print("the Number of digit using iterative method is => " + digitCounter);
+    }
+    
+    public static int countDigitUsingRecursiveMethod(int digit) {
+        /* when the digit become 0 it return the 0 */
+        if (digit == 0) return 0;
+        /* call the recursive  method by sending the reduced digit by 10 */
+        return 1 + countDigitUsingRecursiveMethod(digit/10);
+    }
+    
+    public static void countDigitUsingLogMethod(int digit) {
+        int result = (int) (Math.log10(digit)) + 1;
+        System.out.print("the Number of digit using Math.Log method is => " + result);
+    }
+    
+    public static void countDigitUsingStringMethod(int digit) {
+        int len = String.valueOf(Math.abs(digit)).length();
+        System.out.print("the Number of digit using String method is => " + len);
+        
+    }
 }
-
-int countDigitUsingRecursion(int num) {
-    // base condition 
-    if(num/10 == 0) return 1;
-    return 1 + countDigitUsingRecursion(num/10);
-}
-
-int digitCountUsingLog(int num) {
-    return floor(log10(num) + 1);
-}
-
-int digitCountUsingString(int num) {
-    // declare a character string 
-    char str[20];
-    // conver the number into the string 
-    sprintf(str , "%d" , num);
-    // return the length of that converted string
-    return strlen(str);
-}
-
-int main() {
-    int num = 12345;
-    
-    // iterative approach
-    // removing the digits from right to left
-    int digitCount = countDigits(num);
-    printf("the number of digits are %d in  %d" , num , digitCount);
-    
-    printf("\n");
-    
-    //recursive approach 
-    int number = 5679272;
-    int digitCountUsingRecursion = countDigitUsingRecursion(number);
-    printf("the number of digits using recursion are %d in  %d" , number , digitCountUsingRecursion);
-    
-    printf("\n");
-    
-    //uaing the logarithmic approach 
-    int number_01 = 56792;
-    int digitCountUsingLogAns = digitCountUsingLog(number_01);
-    printf("the number of digits using Log are %d in  %d" , number_01 , digitCountUsingLogAns);
-    
-    printf("\n");
-    
-    //uaing the String cionverting mwthod approach 
-    // return the length of the string.
-    int number_02 = 500679288;
-    int digitCountUsingStringAns = digitCountUsingString(number_02);
-    printf("the number of digits using String are %d in  %d" , number_02 , digitCountUsingStringAns);
-
-    return 0;
-}
-
