@@ -29,7 +29,7 @@ public class Introduction {
 	
 	/* calculate natural sum using the maths formula */
 	public static void naturalSumUsingFormula(int num) {
-		// formula = n * (n-1)/2
-		System.out.print("The Natural Sum using formula: " + (num * ((num -1)/2));
+		// formula = (n * (n+1))/2
+		System.out.print("The Natural Sum using formula: " + ((num * (num+1))/2));
 	}
 }
